@@ -22,4 +22,9 @@ public class ColeccionController {
     public ResponseEntity<ResponseModel> obtenerColeccionPorID(@PathVariable int id) {
         return ResponseEntity.ok(coleccionService.obtenerColeccionPorId(id));
     }
+
+    @GetMapping("/todas")
+    public ResponseEntity<ResponseModel> obtenerTodasColecciones(){
+        return ResponseEntity.ok(coleccionService.obtenerListaColecciones());
+    }
 }

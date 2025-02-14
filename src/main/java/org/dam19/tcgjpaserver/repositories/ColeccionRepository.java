@@ -12,7 +12,7 @@ import java.util.Optional;
 public interface ColeccionRepository extends JpaRepository<Coleccion, Integer> {
     Optional<List<ColeccionInfo>> findAllBy();
 
-    @Query("select c from Coleccion c where c.id >= ?1")
+    @Query("select c from Coleccion c where c.id = ?1")
     Optional<List<ColeccionInfo>> obtenerColeccionPorId(Integer id);
 
 }

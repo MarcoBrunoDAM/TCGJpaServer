@@ -1,0 +1,47 @@
+package org.dam19.tcgjpaserver.services;
+
+import org.dam19.tcgjpaserver.dto.CartaDto;
+import org.dam19.tcgjpaserver.dto.DistribuidoreDto;
+import org.dam19.tcgjpaserver.entities.Carta;
+import org.dam19.tcgjpaserver.entities.Distribuidore;
+import org.dam19.tcgjpaserver.mappers.CartaMapper;
+import org.dam19.tcgjpaserver.models.ResponseModel;
+import org.dam19.tcgjpaserver.projections.CartaInfo;
+import org.dam19.tcgjpaserver.projections.DistribuidoreInfo;
+import org.dam19.tcgjpaserver.repositories.CartaRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class CartaService {
+    @Autowired
+    CartaRepository cartaRepository;
+    @Autowired
+    CartaMapper cartaMapper;
+
+    public ResponseModel crearCarta (CartaDto cartaDto) {
+        Carta carta = cartaMapper.toEntity(cartaDto);
+        if (cartaRepository.save(carta) != null) {
+            return new ResponseModel(0,"Carta creada",carta.getId());
+        }
+        return new ResponseModel(1,"No se pudo crear la carta",null);
+
+    }
+
+    public ResponseModel obtenerCartaPorId(int id) {
+        Optional<List<CartaInfo>> listaCartas = cartaRepository.findCartaById(id);
+        if(listaCartas.isPresent()) {
+            return new ResponseModel(0,"Lista de cartas",listaCartas.get());
+        }
+        return new ResponseModel(1,"No hay lista", null);
+
+    }
+    public ResponseModel obtenerListaCartas() {
+        Optional<List<CartaInfo>> listaCartas = cartaRepository.findAllBy();
+            return new ResponseModel(0,"Lista de cartas",listaCartas.get());
+    }
+
+}

@@ -38,4 +38,10 @@ public class ColeccionService {
         return new ResponseModel(1,"No hay lista", null);
 
     }
+
+    public ResponseModel obtenerListaColecciones() {
+        Optional<List<ColeccionInfo>> listaColecciones = coleccionRepository.findAllBy();
+        return new ResponseModel(0,"Lista Colecciones", listaColecciones);
+
+    }
 }
