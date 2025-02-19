@@ -12,7 +12,8 @@ public class SQLDatabaseManager {
     private static final String SSH_HOST = "mvs.sytes.net";
     private static final int SSH_PORT = 11010;
     private static final String SSH_USER = "sshuser";
-    private static final String SSH_PRIVATE_KEY = "C:\\Users\\Marco\\Claves SSH\\id_rsa";
+    private static final String SSH_PRIVATE_KEY = "C:\\Users\\Lulu\\Downloads\\marco\\id_rsa";
+    //private static final String SSH_PRIVATE_KEY = "C:\\Users\\Marco\\Claves SSH\\id_rsa";
     private static final String DB_HOST = "127.0.0.1"; // PostgreSQL en el servidor remoto
     private static final int DB_PORT = 5432; // Aquí debe ser el puerto real de PostgreSQL en el servidor SSH
     private static final int LOCAL_PORT = 5432; // Puerto local para redirigir PostgreSQL
