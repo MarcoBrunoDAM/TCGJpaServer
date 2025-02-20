@@ -14,7 +14,7 @@ public class DistribuidorController {
     @Autowired
     DistribuidoresService distribuidoresService;
 
-    @PostMapping
+    @PostMapping("/crear")
     public ResponseEntity<ResponseModel> crearDistribuidor(@RequestBody DistribuidoreDto distribuidoreDto) {
         return ResponseEntity.ok(distribuidoresService.crearDistribuidor(distribuidoreDto));
     }
