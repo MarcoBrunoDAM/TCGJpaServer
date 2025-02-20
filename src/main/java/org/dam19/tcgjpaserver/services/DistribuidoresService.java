@@ -34,7 +34,7 @@ public class DistribuidoresService {
     public ResponseModel obtenerDistribuidorPorId(int id) {
         Optional<List<DistribuidoreInfo>> listaDistribuidores = distribuidoreRepository.obtenerDistribuidorById(id);
         if(listaDistribuidores.isPresent()){
-            return new ResponseModel(0,"Lista de colecciones",listaDistribuidores.get());
+            return new ResponseModel(0,"Lista de distribuidores",listaDistribuidores.get());
         }
         return new ResponseModel(1,"No hay lista", null);
 

@@ -6,6 +6,8 @@ import org.dam19.tcgjpaserver.models.ResponseModel;
 import org.dam19.tcgjpaserver.services.DistribuidoresService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -13,10 +15,10 @@ import org.springframework.web.bind.annotation.*;
 public class DistribuidorController {
     @Autowired
     DistribuidoresService distribuidoresService;
-
+//AuthenticationPrincipal UserDetails userDetails
     @PostMapping("/crear")
     public ResponseEntity<ResponseModel> crearDistribuidor(@RequestBody DistribuidoreDto distribuidoreDto) {
-        return ResponseEntity.ok(distribuidoresService.crearDistribuidor(distribuidoreDto));
+            return ResponseEntity.ok(distribuidoresService.crearDistribuidor(distribuidoreDto));
     }
 
     @GetMapping("/buscar/{id}")

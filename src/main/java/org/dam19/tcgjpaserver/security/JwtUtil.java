@@ -5,10 +5,10 @@ import io.jsonwebtoken.Jwts;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.util.function.Function;
 
 @Service
 public class JwtUtil {
-
     @Value("${jwt.secret}")
     private String SECRET_KEY;
 
@@ -30,4 +30,14 @@ public class JwtUtil {
                 .parseClaimsJws(token)
                 .getBody();
     }
+    // Extraer un dato específico (por ejemplo, "sub" o "rol")
+    public <T> T extraerDato(String token, Function<Claims, T> claimsResolver) {
+        return claimsResolver.apply(getClaims(token));
+    }
+
+    // Extraer el rol del token
+    public String extractRol(String token) {
+        return extraerDato(token, claims -> claims.get(String.valueOf("admin"), String.class));
+    }
+
 }

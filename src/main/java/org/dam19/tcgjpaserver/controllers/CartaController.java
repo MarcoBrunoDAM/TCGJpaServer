@@ -5,6 +5,8 @@ import org.dam19.tcgjpaserver.models.ResponseModel;
 import org.dam19.tcgjpaserver.services.CartaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -14,8 +16,13 @@ public class CartaController {
     CartaService cartaService;
 
     @PostMapping("/crear")
-    public ResponseEntity<ResponseModel> crearCarta(@RequestBody CartaDto cartaDto) {
-        return ResponseEntity.ok(cartaService.crearCarta(cartaDto));
+    public ResponseEntity<ResponseModel> crearCarta(@RequestBody CartaDto cartaDto,
+                                                    @AuthenticationPrincipal UserDetails userDetails) {
+        boolean esAdmin = Boolean.valueOf(userDetails.getAuthorities().iterator().next().getAuthority());
+        if (esAdmin) {
+            return ResponseEntity.ok(cartaService.crearCarta(cartaDto));
+        }
+        return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
     }
 
     @GetMapping("/buscar/{id}")
