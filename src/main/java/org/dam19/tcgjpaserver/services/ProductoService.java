@@ -40,4 +40,13 @@ public class ProductoService {
         Optional<List<ProductoInfo>> listaProductos = productoRepository.findAllBy();
         return new ResponseModel(0,"Lista de productos",listaProductos.get());
     }
+
+    public ResponseModel eliminarProductoPorId(int id) {
+        long delete = productoRepository.deleteByIdIs(id);
+        if(delete > 0){
+            return new ResponseModel(0,"Se ha eliminado el producto",null);
+        }
+        return new ResponseModel(1,"No hay lista", null);
+
+    }
 }

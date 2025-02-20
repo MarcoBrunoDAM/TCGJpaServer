@@ -27,4 +27,10 @@ public class ColeccionController {
     public ResponseEntity<ResponseModel> obtenerTodasColecciones(){
         return ResponseEntity.ok(coleccionService.obtenerListaColecciones());
     }
+
+    @GetMapping("/borrar/{id}")
+    public ResponseEntity<ResponseModel> eliminarColeccionPorId(@PathVariable int id) {
+        return ResponseEntity.ok(coleccionService.eliminarColeccionPorId(id));
+    }
+
 }

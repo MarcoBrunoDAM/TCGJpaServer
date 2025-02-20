@@ -31,4 +31,9 @@ public class DistribuidorController {
         return ResponseEntity.ok(distribuidoresService.obtenerListaDistribuidores());
     }
 
+    @GetMapping("/borrar/{id}")
+    public ResponseEntity<ResponseModel> eliminarDistribuidorPorId(@PathVariable int id) {
+        return ResponseEntity.ok(distribuidoresService.eliminarDistribuidorPorId(id));
+    }
+
 }

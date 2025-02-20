@@ -34,4 +34,10 @@ public class CartaController {
     public ResponseEntity<ResponseModel> obtenerTodasColecciones(){
         return ResponseEntity.ok(cartaService.obtenerListaCartas());
     }
+
+    @GetMapping("/borrar/{id}")
+    public ResponseEntity<ResponseModel> eliminarCartaPorId(@PathVariable int id) {
+        return ResponseEntity.ok(cartaService.eliminarCartaPorId(id));
+    }
+
 }

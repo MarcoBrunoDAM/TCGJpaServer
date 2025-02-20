@@ -43,4 +43,13 @@ public class DistribuidoresService {
         Optional<List<DistribuidoreInfo>> listaDistribuidores = distribuidoreRepository.findAllBy();
         return new ResponseModel(0,"Lista de distribuidores",listaDistribuidores);
     }
+
+    public ResponseModel eliminarDistribuidorPorId(int id) {
+       long delete = distribuidoreRepository.deleteByIdIs(id);
+        if(delete > 0){
+            return new ResponseModel(0,"Se ha eliminado el distribuidor",null);
+        }
+        return new ResponseModel(1,"No hay lista", null);
+
+    }
 }

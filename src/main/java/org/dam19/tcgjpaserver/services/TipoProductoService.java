@@ -41,4 +41,13 @@ public class TipoProductoService {
         Optional<List<TipoProductoInfo>> listaProductos = tipoProductoRepository.findAllBy();
         return new ResponseModel(0,"Lista de productos",listaProductos.get());
     }
+
+    public ResponseModel eliminarTipoProductoPorId(int id) {
+        long delete = tipoProductoRepository.deleteByIdIs(id);
+        if(delete> 0){
+            return new ResponseModel(0,"Se ha eliminado el tipo",null);
+        }
+        return new ResponseModel(1,"No hay lista", null);
+
+    }
 }

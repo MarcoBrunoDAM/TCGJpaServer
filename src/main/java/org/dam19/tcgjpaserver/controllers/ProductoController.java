@@ -28,4 +28,10 @@ public class ProductoController {
     public ResponseEntity<ResponseModel> obtenerTodosProductos(){
         return ResponseEntity.ok(productoService.obtenerListaProductos());
     }
+
+    @GetMapping("/borrar/{id}")
+    public ResponseEntity<ResponseModel> eliminaProductoPorId(@PathVariable int id) {
+        return ResponseEntity.ok(productoService.eliminarProductoPorId(id));
+    }
+
 }

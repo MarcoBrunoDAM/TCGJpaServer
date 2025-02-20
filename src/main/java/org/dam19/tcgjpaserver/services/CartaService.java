@@ -44,4 +44,13 @@ public class CartaService {
             return new ResponseModel(0,"Lista de cartas",listaCartas.get());
     }
 
+    public ResponseModel eliminarCartaPorId(int id) {
+        long delete = cartaRepository.deleteByIdIs(id);
+        if(delete> 0){
+            return new ResponseModel(0,"Se ha eliminado la carta",null);
+        }
+        return new ResponseModel(1,"No hay lista", null);
+
+    }
+
 }

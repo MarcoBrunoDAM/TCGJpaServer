@@ -27,4 +27,10 @@ public class TipoProductoController {
     public ResponseEntity<ResponseModel> obtenerTodosProductos(){
         return ResponseEntity.ok(tipoProductoService.obtenerListaTipoProductos());
     }
+
+    @GetMapping("/borrar/{id}")
+    public ResponseEntity<ResponseModel> eliminarTipoProductoPorId(@PathVariable int id) {
+        return ResponseEntity.ok(tipoProductoService.eliminarTipoProductoPorId(id));
+    }
+
 }

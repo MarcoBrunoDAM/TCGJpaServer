@@ -44,4 +44,13 @@ public class ColeccionService {
         return new ResponseModel(0,"Lista Colecciones", listaColecciones);
 
     }
+
+    public ResponseModel eliminarColeccionPorId(int id) {
+        long delete = coleccionRepository.deleteByIdIs(id);
+        if(delete > 0){
+            return new ResponseModel(0,"Se ha eliminado la coleccion",null);
+        }
+        return new ResponseModel(1,"No hay lista", null);
+
+    }
 }
