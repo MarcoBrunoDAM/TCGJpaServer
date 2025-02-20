@@ -17,23 +17,58 @@ public class DistribuidorController {
     DistribuidoresService distribuidoresService;
 //AuthenticationPrincipal UserDetails userDetails
     @PostMapping("/crear")
-    public ResponseEntity<ResponseModel> crearDistribuidor(@RequestBody DistribuidoreDto distribuidoreDto) {
+    public ResponseEntity<ResponseModel> crearDistribuidor(@RequestBody DistribuidoreDto distribuidoreDto,
+    @AuthenticationPrincipal UserDetails userDetails) {
+        if(userDetails == null){
+            return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
+        }
+        String admin = userDetails.getAuthorities().iterator().next().getAuthority();
+        if(admin.equals("ROLE_true")){
             return ResponseEntity.ok(distribuidoresService.crearDistribuidor(distribuidoreDto));
+        }
+        return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
     }
 
     @GetMapping("/buscar/{id}")
-    public ResponseEntity<ResponseModel> obtenerDistribuidorPorID(@PathVariable int id) {
-        return ResponseEntity.ok(distribuidoresService.obtenerDistribuidorPorId(id));
+    public ResponseEntity<ResponseModel> obtenerDistribuidorPorID(@PathVariable int id,
+                                                                  @AuthenticationPrincipal UserDetails userDetails){
+        if(userDetails == null){
+            return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
+        }
+        String admin = userDetails.getAuthorities().iterator().next().getAuthority();
+        if(admin.equals("ROLE_true")){
+            return ResponseEntity.ok(distribuidoresService.obtenerDistribuidorPorId(id));
+        }
+        return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
     }
+
+
 
     @GetMapping("/todos")
-    public ResponseEntity<ResponseModel> obtenerListaDistribuidores() {
-        return ResponseEntity.ok(distribuidoresService.obtenerListaDistribuidores());
+    public ResponseEntity<ResponseModel> obtenerListaDistribuidores( @AuthenticationPrincipal UserDetails userDetails) {
+        if(userDetails == null){
+            return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
+        }
+        String admin = userDetails.getAuthorities().iterator().next().getAuthority();
+        if(admin.equals("ROLE_true")){
+            return ResponseEntity.ok(distribuidoresService.obtenerListaDistribuidores());
+        }
+        return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
     }
 
+
+
+
     @GetMapping("/borrar/{id}")
-    public ResponseEntity<ResponseModel> eliminarDistribuidorPorId(@PathVariable int id) {
-        return ResponseEntity.ok(distribuidoresService.eliminarDistribuidorPorId(id));
+    public ResponseEntity<ResponseModel> eliminarDistribuidorPorId(@PathVariable int id,@AuthenticationPrincipal UserDetails userDetails) {
+        if(userDetails == null){
+            return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
+        }
+        String admin = userDetails.getAuthorities().iterator().next().getAuthority();
+        if(admin.equals("ROLE_true")){
+            return ResponseEntity.ok(distribuidoresService.eliminarDistribuidorPorId(id));
+        }
+        return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
     }
 
 }
