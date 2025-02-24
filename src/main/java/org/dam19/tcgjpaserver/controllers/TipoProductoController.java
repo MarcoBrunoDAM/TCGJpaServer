@@ -18,14 +18,14 @@ public class TipoProductoController {
     @PostMapping("/crear")
     public ResponseEntity<ResponseModel> crearTipoProducto(@RequestBody TipoProductoDto tipoProductoDto,
                                                            @AuthenticationPrincipal UserDetails userDetails) {
-        if (userDetails == null) {
-            return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
-        }
-        String admin = userDetails.getAuthorities().iterator().next().getAuthority();
-        if(admin.equals("ROLE_true")){
-            return ResponseEntity.ok(tipoProductoService.crearTipoProducto(tipoProductoDto));
-        }
-        return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
+//        if (userDetails == null) {
+//            return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
+//        }
+//        String admin = userDetails.getAuthorities().iterator().next().getAuthority();
+//        if(admin.equals("ROLE_true")){
+           return ResponseEntity.ok(tipoProductoService.crearTipoProducto(tipoProductoDto));
+//        }
+//        return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
     }
 
 

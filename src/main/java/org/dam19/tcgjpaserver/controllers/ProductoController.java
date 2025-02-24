@@ -19,14 +19,14 @@ public class ProductoController {
     @PostMapping("/crear")
     public ResponseEntity<ResponseModel> crearProducto(@RequestBody ProductoDto productoDto,
                                                        @AuthenticationPrincipal UserDetails userDetails) {
-        if (userDetails == null) {
-            return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
-        }
-        String admin = userDetails.getAuthorities().iterator().next().getAuthority();
-        if (admin.equals("ROLE_true")) {
-            return ResponseEntity.ok(productoService.crearProducto(productoDto));
-        }
-        return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
+//        if (userDetails == null) {
+//            return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
+//        }
+//        String admin = userDetails.getAuthorities().iterator().next().getAuthority();
+//        if (admin.equals("ROLE_true")) {
+          return ResponseEntity.ok(productoService.crearProducto(productoDto));
+//        }
+//        return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
     }
 
 
@@ -49,14 +49,14 @@ public class ProductoController {
 
     @GetMapping("/todos")
     public ResponseEntity<ResponseModel> obtenerTodosProductos( @AuthenticationPrincipal UserDetails userDetails){
-        if (userDetails == null) {
-            return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
-        }
-        String admin = userDetails.getAuthorities().iterator().next().getAuthority();
-        if (admin.equals("ROLE_true")) {
-            return ResponseEntity.ok(productoService.obtenerListaProductos());
-        }
-        return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
+//        if (userDetails == null) {
+//            return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
+//        }
+//        String admin = userDetails.getAuthorities().iterator().next().getAuthority();
+//        if (admin.equals("ROLE_true")) {
+          return ResponseEntity.ok(productoService.obtenerListaProductos());
+//        }
+//        return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
     }
 
 

@@ -3,6 +3,9 @@ package org.dam19.tcgjpaserver.entities;
 import jakarta.persistence.*;
 import org.hibernate.annotations.ColumnDefault;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "producto")
 public class Producto {
@@ -22,6 +25,7 @@ public class Producto {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_coleccion")
     private Coleccion idColeccion;
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_distribuidor")
