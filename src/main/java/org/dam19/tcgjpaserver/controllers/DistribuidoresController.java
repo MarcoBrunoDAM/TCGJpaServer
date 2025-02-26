@@ -1,6 +1,5 @@
 package org.dam19.tcgjpaserver.controllers;
 
-import org.dam19.tcgjpaserver.dto.ColeccionDto;
 import org.dam19.tcgjpaserver.dto.DistribuidoreDto;
 import org.dam19.tcgjpaserver.models.ResponseModel;
 import org.dam19.tcgjpaserver.services.DistribuidoresService;
@@ -12,19 +11,19 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/distribuidores")
-public class DistribuidorController {
+public class DistribuidoresController {
     @Autowired
     DistribuidoresService distribuidoresService;
-//AuthenticationPrincipal UserDetails userDetails
+    //AuthenticationPrincipal UserDetails userDetails
     @PostMapping("/crear")
     public ResponseEntity<ResponseModel> crearDistribuidor(@RequestBody DistribuidoreDto distribuidoreDto,
-   @AuthenticationPrincipal UserDetails userDetails) {
+                                                           @AuthenticationPrincipal UserDetails userDetails) {
 //        if(userDetails == null){
 //            return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
 //        }
 //        String admin = userDetails.getAuthorities().iterator().next().getAuthority();
 //        if(admin.equals("ROLE_true")){
-          return ResponseEntity.ok(distribuidoresService.crearDistribuidor(distribuidoreDto));
+        return ResponseEntity.ok(distribuidoresService.crearDistribuidor(distribuidoreDto));
 //        }
 //        return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
     }
@@ -51,7 +50,7 @@ public class DistribuidorController {
 //        }
 //        String admin = userDetails.getAuthorities().iterator().next().getAuthority();
 //        if(admin.equals("ROLE_true")){
-           return ResponseEntity.ok(distribuidoresService.obtenerListaDistribuidores());
+        return ResponseEntity.ok(distribuidoresService.obtenerListaDistribuidores());
 //        }
 //        return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
     }
@@ -70,5 +69,4 @@ public class DistribuidorController {
         }
         return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
     }
-
 }

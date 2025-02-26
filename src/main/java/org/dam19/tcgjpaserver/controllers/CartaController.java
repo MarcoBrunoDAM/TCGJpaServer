@@ -18,14 +18,14 @@ public class CartaController {
     @PostMapping("/crear")
     public ResponseEntity<ResponseModel> crearCarta(@RequestBody CartaDto cartaDto,
                                                     @AuthenticationPrincipal UserDetails userDetails) {
-        if(userDetails == null){
-            return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
-        }
-        String admin = userDetails.getAuthorities().iterator().next().getAuthority();
-        if (admin.equals("ROLE_true")) {
-            return ResponseEntity.ok(cartaService.crearCarta(cartaDto));
-        }
-        return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
+//        if(userDetails == null){
+//            return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
+//        }
+//        String admin = userDetails.getAuthorities().iterator().next().getAuthority();
+//        if (admin.equals("ROLE_true")) {
+        return ResponseEntity.ok(cartaService.crearCarta(cartaDto));
+//        }
+//        return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
     }
 
 
@@ -62,7 +62,7 @@ public class CartaController {
 
 
     @GetMapping("/borrar/{id}")
-    public ResponseEntity<ResponseModel> eliminarCartaPorId(@PathVariable int id,@AuthenticationPrincipal UserDetails userDetails) {
+    public ResponseEntity<ResponseModel> eliminarCartaPorId(@PathVariable int id, @AuthenticationPrincipal UserDetails userDetails) {
         if(userDetails == null){
             return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
         }
@@ -70,7 +70,6 @@ public class CartaController {
         if (admin.equals("ROLE_true")) {
             return ResponseEntity.ok(cartaService.eliminarCartaPorId(id));
         }
-       return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
+        return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
     }
-
 }

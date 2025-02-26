@@ -18,7 +18,10 @@ public class Distribuidore {
     @Column(name = "nombre", length = Integer.MAX_VALUE)
     private String nombre;
 
-    @OneToMany(mappedBy = "idDistribuidor")
+    @ManyToMany
+    @JoinTable(name = "producto_distribuidor",
+            joinColumns = @JoinColumn(name = "id_distibuidor"),
+            inverseJoinColumns = @JoinColumn(name = "id_producto"))
     private Set<Producto> productos = new LinkedHashSet<>();
 
     public Integer getId() {

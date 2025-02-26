@@ -26,13 +26,14 @@ public class Producto {
     @JoinColumn(name = "id_coleccion")
     private Coleccion idColeccion;
 
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_distribuidor")
-    private Distribuidore idDistribuidor;
-
     @Column(name = "url_imagen", length = Integer.MAX_VALUE)
     private String urlImagen;
+
+    @ManyToMany
+    @JoinTable(name = "producto_distribuidor",
+            joinColumns = @JoinColumn(name = "id_producto"),
+            inverseJoinColumns = @JoinColumn(name = "id_distibuidor"))
+    private Set<Distribuidore> distribuidores = new LinkedHashSet<>();
 
     public Integer getId() {
         return id;
@@ -66,20 +67,20 @@ public class Producto {
         this.idColeccion = idColeccion;
     }
 
-    public Distribuidore getIdDistribuidor() {
-        return idDistribuidor;
-    }
-
-    public void setIdDistribuidor(Distribuidore idDistribuidor) {
-        this.idDistribuidor = idDistribuidor;
-    }
-
     public String getUrlImagen() {
         return urlImagen;
     }
 
     public void setUrlImagen(String urlImagen) {
         this.urlImagen = urlImagen;
+    }
+
+    public Set<Distribuidore> getDistribuidores() {
+        return distribuidores;
+    }
+
+    public void setDistribuidores(Set<Distribuidore> distribuidores) {
+        this.distribuidores = distribuidores;
     }
 
 }

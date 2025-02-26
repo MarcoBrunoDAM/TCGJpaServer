@@ -3,9 +3,6 @@ package org.dam19.tcgjpaserver.entities;
 import jakarta.persistence.*;
 import org.hibernate.annotations.ColumnDefault;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
-
 @Entity
 @Table(name = "tipo_producto")
 public class TipoProducto {
@@ -17,9 +14,6 @@ public class TipoProducto {
 
     @Column(name = "tipo", length = Integer.MAX_VALUE)
     private String tipo;
-
-    @OneToMany(mappedBy = "idTipo")
-    private Set<Producto> productos = new LinkedHashSet<>();
 
     public Integer getId() {
         return id;
@@ -35,14 +29,6 @@ public class TipoProducto {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
-    }
-
-    public Set<Producto> getProductos() {
-        return productos;
-    }
-
-    public void setProductos(Set<Producto> productos) {
-        this.productos = productos;
     }
 
 }

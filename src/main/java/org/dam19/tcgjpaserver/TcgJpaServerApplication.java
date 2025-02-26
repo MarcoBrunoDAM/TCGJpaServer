@@ -9,12 +9,12 @@ public class TcgJpaServerApplication {
 
     public static void main(String[] args) {
         // Establecer el túnel SSH
-//        try {
-//            SQLDatabaseManager.connectSSH();
-//        } catch (Exception e) {
-//            System.err.println("No se pudo abrir el túnel SSH: " + e.getMessage());
-//            System.exit(1); // Detiene la aplicación si falla la conexión SSH
-//        }
+        try {
+            SQLDatabaseManager.connectSSH();
+        } catch (Exception e) {
+            System.err.println("No se pudo abrir el túnel SSH: " + e.getMessage());
+            System.exit(1); // Detiene la aplicación si falla la conexión SSH
+        }
 
         // Iniciar Spring Boot después de abrir el túnel
         SpringApplication.run(TcgJpaServerApplication.class, args);

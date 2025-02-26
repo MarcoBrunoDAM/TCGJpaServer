@@ -10,10 +10,10 @@ public class CartaDto implements Serializable {
     private final Integer id;
     private final String nombre;
     private final Integer numeroColeccion;
-    private final ColeccionDto1 idColeccion;
+    private final ColeccionDto idColeccion;
     private final String urlImagen;
 
-    public CartaDto(Integer id, String nombre, Integer numeroColeccion, ColeccionDto1 idColeccion, String urlImagen) {
+    public CartaDto(Integer id, String nombre, Integer numeroColeccion, ColeccionDto idColeccion, String urlImagen) {
         this.id = id;
         this.nombre = nombre;
         this.numeroColeccion = numeroColeccion;
@@ -33,7 +33,7 @@ public class CartaDto implements Serializable {
         return numeroColeccion;
     }
 
-    public ColeccionDto1 getIdColeccion() {
+    public ColeccionDto getIdColeccion() {
         return idColeccion;
     }
 
@@ -69,12 +69,12 @@ public class CartaDto implements Serializable {
     }
 
     /**
-     * DTO for {@link org.dam19.tcgjpaserver.entities.Coleccion}
+     * DTO for {@link org.dam19.tcgjpaservertest.entities.Coleccion}
      */
-    public static class ColeccionDto1 implements Serializable {
+    public static class ColeccionDto implements Serializable {
         private final Integer id;
 
-        public ColeccionDto1(Integer id) {
+        public ColeccionDto(Integer id) {
             this.id = id;
         }
 
@@ -86,7 +86,7 @@ public class CartaDto implements Serializable {
         public boolean equals(Object o) {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
-            ColeccionDto1 entity = (ColeccionDto1) o;
+            ColeccionDto entity = (ColeccionDto) o;
             return Objects.equals(this.id, entity.id);
         }
 

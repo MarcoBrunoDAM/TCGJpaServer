@@ -2,6 +2,7 @@ package org.dam19.tcgjpaserver.dto;
 
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * DTO for {@link org.dam19.tcgjpaserver.entities.Producto}
@@ -11,16 +12,16 @@ public class ProductoDto implements Serializable {
     private final String nombre;
     private final TipoProductoDto1 idTipo;
     private final ColeccionDto1 idColeccion;
-    private final DistribuidoreDto1 idDistribuidor;
     private final String urlImagen;
+    private final Set<DistribuidoreDto1> distribuidores;
 
-    public ProductoDto(Integer id, String nombre, TipoProductoDto1 idTipo, ColeccionDto1 idColeccion, DistribuidoreDto1 idDistribuidor, String urlImagen) {
+    public ProductoDto(Integer id, String nombre, TipoProductoDto1 idTipo, ColeccionDto1 idColeccion, String urlImagen, Set<DistribuidoreDto1> distribuidores) {
         this.id = id;
         this.nombre = nombre;
         this.idTipo = idTipo;
         this.idColeccion = idColeccion;
-        this.idDistribuidor = idDistribuidor;
         this.urlImagen = urlImagen;
+        this.distribuidores = distribuidores;
     }
 
     public Integer getId() {
@@ -39,12 +40,12 @@ public class ProductoDto implements Serializable {
         return idColeccion;
     }
 
-    public DistribuidoreDto1 getIdDistribuidor() {
-        return idDistribuidor;
-    }
-
     public String getUrlImagen() {
         return urlImagen;
+    }
+
+    public Set<DistribuidoreDto1> getDistribuidores() {
+        return distribuidores;
     }
 
     @Override
@@ -56,13 +57,13 @@ public class ProductoDto implements Serializable {
                 Objects.equals(this.nombre, entity.nombre) &&
                 Objects.equals(this.idTipo, entity.idTipo) &&
                 Objects.equals(this.idColeccion, entity.idColeccion) &&
-                Objects.equals(this.idDistribuidor, entity.idDistribuidor) &&
-                Objects.equals(this.urlImagen, entity.urlImagen);
+                Objects.equals(this.urlImagen, entity.urlImagen) &&
+                Objects.equals(this.distribuidores, entity.distribuidores);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nombre, idTipo, idColeccion, idDistribuidor, urlImagen);
+        return Objects.hash(id, nombre, idTipo, idColeccion, urlImagen, distribuidores);
     }
 
     @Override
@@ -72,12 +73,12 @@ public class ProductoDto implements Serializable {
                 "nombre = " + nombre + ", " +
                 "idTipo = " + idTipo + ", " +
                 "idColeccion = " + idColeccion + ", " +
-                "idDistribuidor = " + idDistribuidor + ", " +
-                "urlImagen = " + urlImagen + ")";
+                "urlImagen = " + urlImagen + ", " +
+                "distribuidores = " + distribuidores + ")";
     }
 
     /**
-     * DTO for {@link org.dam19.tcgjpaserver.entities.TipoProducto}
+     * DTO for {@link org.dam19.tcgjpaservertest.entities.TipoProducto}
      */
     public static class TipoProductoDto1 implements Serializable {
         private final Integer id;
@@ -111,7 +112,7 @@ public class ProductoDto implements Serializable {
     }
 
     /**
-     * DTO for {@link org.dam19.tcgjpaserver.entities.Coleccion}
+     * DTO for {@link org.dam19.tcgjpaservertest.entities.Coleccion}
      */
     public static class ColeccionDto1 implements Serializable {
         private final Integer id;
@@ -145,7 +146,7 @@ public class ProductoDto implements Serializable {
     }
 
     /**
-     * DTO for {@link org.dam19.tcgjpaserver.entities.Distribuidore}
+     * DTO for {@link org.dam19.tcgjpaservertest.entities.Distribuidore}
      */
     public static class DistribuidoreDto1 implements Serializable {
         private final Integer id;

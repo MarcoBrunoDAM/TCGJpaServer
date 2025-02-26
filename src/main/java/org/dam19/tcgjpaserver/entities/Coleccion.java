@@ -22,6 +22,7 @@ public class Coleccion {
     @Column(name = "numero_cartas")
     private Integer numeroCartas;
 
+    @ColumnDefault("now()")
     @Column(name = "fecha_lanzamiento")
     private LocalDate fechaLanzamiento;
 

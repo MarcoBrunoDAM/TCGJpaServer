@@ -23,7 +23,7 @@ public class TipoProductoController {
 //        }
 //        String admin = userDetails.getAuthorities().iterator().next().getAuthority();
 //        if(admin.equals("ROLE_true")){
-           return ResponseEntity.ok(tipoProductoService.crearTipoProducto(tipoProductoDto));
+        return ResponseEntity.ok(tipoProductoService.crearTipoProducto(tipoProductoDto));
 //        }
 //        return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
     }
@@ -39,7 +39,7 @@ public class TipoProductoController {
         if(admin.equals("ROLE_true")){
             return ResponseEntity.ok(tipoProductoService.obtenerTipoProductoPorId(id));
         }
-       return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
+        return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
     }
 
 
@@ -53,7 +53,7 @@ public class TipoProductoController {
         if(admin.equals("ROLE_true")){
             return ResponseEntity.ok(tipoProductoService.obtenerListaTipoProductos());
         }
-       return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
+        return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
     }
 
 
@@ -68,7 +68,8 @@ public class TipoProductoController {
         if(admin.equals("ROLE_true")){
             return ResponseEntity.ok(tipoProductoService.eliminarTipoProductoPorId(id));
         }
-       return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
+        return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
     }
+
 
 }

@@ -1,6 +1,5 @@
 package org.dam19.tcgjpaserver.services;
 
-import org.dam19.tcgjpaserver.dto.ProductoDto;
 import org.dam19.tcgjpaserver.dto.TipoProductoDto;
 import org.dam19.tcgjpaserver.entities.TipoProducto;
 import org.dam19.tcgjpaserver.mappers.TipoProductoMapper;

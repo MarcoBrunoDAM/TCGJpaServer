@@ -1,5 +1,7 @@
 package org.dam19.tcgjpaserver.projections;
 
+import java.util.Set;
+
 /**
  * Projection for {@link org.dam19.tcgjpaserver.entities.Producto}
  */
@@ -14,7 +16,7 @@ public interface ProductoInfo {
 
     ColeccionInfo1 getIdColeccion();
 
-    DistribuidoreInfo getIdDistribuidor();
+    Set<DistribuidoreInfo1> getDistribuidores();
 
     /**
      * Projection for {@link org.dam19.tcgjpaserver.entities.TipoProducto}
@@ -37,7 +39,7 @@ public interface ProductoInfo {
     /**
      * Projection for {@link org.dam19.tcgjpaserver.entities.Distribuidore}
      */
-    interface DistribuidoreInfo {
+    interface DistribuidoreInfo1 {
         Integer getId();
 
         String getNombre();

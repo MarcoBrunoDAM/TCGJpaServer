@@ -1,7 +1,7 @@
 package org.dam19.tcgjpaserver.projections;
 
 /**
- * Projection for {@link org.dam19.tcgjpaserver.entities.Carta}
+ * Projection for {@link org.dam19.tcgjpaservertest.entities.Carta}
  */
 public interface CartaInfo {
     Integer getId();
@@ -15,13 +15,11 @@ public interface CartaInfo {
     ColeccionInfo getIdColeccion();
 
     /**
-     * Projection for {@link org.dam19.tcgjpaserver.entities.Coleccion}
+     * Projection for {@link org.dam19.tcgjpaservertest.entities.Coleccion}
      */
     interface ColeccionInfo {
         Integer getId();
 
         String getNombre();
-
-        Integer getNumeroCartas();
     }
 }

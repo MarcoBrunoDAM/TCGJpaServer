@@ -1,12 +1,9 @@
 package org.dam19.tcgjpaserver.services;
 
-import org.dam19.tcgjpaserver.dto.ColeccionDto;
 import org.dam19.tcgjpaserver.dto.DistribuidoreDto;
-import org.dam19.tcgjpaserver.entities.Coleccion;
 import org.dam19.tcgjpaserver.entities.Distribuidore;
 import org.dam19.tcgjpaserver.mappers.DistribuidoreMapper;
 import org.dam19.tcgjpaserver.models.ResponseModel;
-import org.dam19.tcgjpaserver.projections.ColeccionInfo;
 import org.dam19.tcgjpaserver.projections.DistribuidoreInfo;
 import org.dam19.tcgjpaserver.repositories.DistribuidoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,7 +42,7 @@ public class DistribuidoresService {
     }
 
     public ResponseModel eliminarDistribuidorPorId(int id) {
-       long delete = distribuidoreRepository.deleteByIdIs(id);
+        long delete = distribuidoreRepository.deleteByIdIs(id);
         if(delete > 0){
             return new ResponseModel(0,"Se ha eliminado el distribuidor",null);
         }

@@ -23,7 +23,7 @@ public class ColeccionController {
 //        }
 //        String admin = userDetails.getAuthorities().iterator().next().getAuthority();
 //        if(admin.equals("ROLE_true")) {
-          return ResponseEntity.ok(coleccionService.crearColeccion(coleccionDto));
+        return ResponseEntity.ok(coleccionService.crearColeccion(coleccionDto));
 //        }
 //        return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
     }
@@ -39,7 +39,7 @@ public class ColeccionController {
         if(admin.equals("ROLE_true")) {
             return ResponseEntity.ok(coleccionService.obtenerColeccionPorId(id));
         }
-       return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
+        return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
     }
 
 
@@ -67,7 +67,6 @@ public class ColeccionController {
         if(admin.equals("ROLE_true")) {
             return ResponseEntity.ok(coleccionService.eliminarColeccionPorId(id));
         }
-       return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
+        return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
     }
-
 }

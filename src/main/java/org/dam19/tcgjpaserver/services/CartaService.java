@@ -1,13 +1,10 @@
 package org.dam19.tcgjpaserver.services;
 
 import org.dam19.tcgjpaserver.dto.CartaDto;
-import org.dam19.tcgjpaserver.dto.DistribuidoreDto;
 import org.dam19.tcgjpaserver.entities.Carta;
-import org.dam19.tcgjpaserver.entities.Distribuidore;
 import org.dam19.tcgjpaserver.mappers.CartaMapper;
 import org.dam19.tcgjpaserver.models.ResponseModel;
 import org.dam19.tcgjpaserver.projections.CartaInfo;
-import org.dam19.tcgjpaserver.projections.DistribuidoreInfo;
 import org.dam19.tcgjpaserver.repositories.CartaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,7 +38,7 @@ public class CartaService {
     }
     public ResponseModel obtenerListaCartas() {
         Optional<List<CartaInfo>> listaCartas = cartaRepository.findAllBy();
-            return new ResponseModel(0,"Lista de cartas",listaCartas.get());
+        return new ResponseModel(0,"Lista de cartas",listaCartas.get());
     }
 
     public ResponseModel eliminarCartaPorId(int id) {
@@ -52,5 +49,4 @@ public class CartaService {
         return new ResponseModel(1,"No hay lista", null);
 
     }
-
 }

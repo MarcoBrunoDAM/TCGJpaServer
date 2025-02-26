@@ -1,6 +1,5 @@
 package org.dam19.tcgjpaserver.controllers;
 
-import org.dam19.tcgjpaserver.dto.CartaDto;
 import org.dam19.tcgjpaserver.dto.ProductoDto;
 import org.dam19.tcgjpaserver.models.ResponseModel;
 import org.dam19.tcgjpaserver.services.ProductoService;
@@ -12,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/productos")
-public class ProductoController {
+public class ProductosController {
     @Autowired
     private ProductoService productoService;
 
@@ -24,7 +23,7 @@ public class ProductoController {
 //        }
 //        String admin = userDetails.getAuthorities().iterator().next().getAuthority();
 //        if (admin.equals("ROLE_true")) {
-          return ResponseEntity.ok(productoService.crearProducto(productoDto));
+        return ResponseEntity.ok(productoService.crearProducto(productoDto));
 //        }
 //        return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
     }
@@ -54,7 +53,7 @@ public class ProductoController {
 //        }
 //        String admin = userDetails.getAuthorities().iterator().next().getAuthority();
 //        if (admin.equals("ROLE_true")) {
-          return ResponseEntity.ok(productoService.obtenerListaProductos());
+        return ResponseEntity.ok(productoService.obtenerListaProductos());
 //        }
 //        return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
     }
@@ -69,7 +68,23 @@ public class ProductoController {
         if (admin.equals("ROLE_true")) {
             return ResponseEntity.ok(productoService.eliminarProductoPorId(id));
         }
-       return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
+        return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
     }
 
+
+    @GetMapping("/buscar_distribuidor/{id}")
+    public ResponseEntity<ResponseModel> obtenerProductoPorIdDistribuidor(@PathVariable int id,
+                                                                          @AuthenticationPrincipal UserDetails userDetails) {
+//        if (userDetails == null) {
+//            return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
+//        }
+//        String admin = userDetails.getAuthorities().iterator().next().getAuthority();
+//        if (admin.equals("ROLE_true")) {
+        return ResponseEntity.ok(productoService.obtenerProductoPorIdDistribuidor(id));
+//        }
+//        return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
+//    }
+//
+
+    }
 }
