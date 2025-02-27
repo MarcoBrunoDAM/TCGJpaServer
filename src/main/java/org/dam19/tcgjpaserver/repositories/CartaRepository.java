@@ -22,6 +22,6 @@ public interface CartaRepository extends JpaRepository<Carta, Integer> {
   int deleteByIdIs(Integer id);
 
   @Query("select c from Carta c where c.idColeccion.id = ?1")
-  Optional<List<Carta>> findCartasByColeccionId(Integer id);
+  Optional<List<CartaInfo>> findCartasByColeccionId(Integer id);
 
 }
