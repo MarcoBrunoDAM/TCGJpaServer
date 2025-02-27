@@ -49,4 +49,11 @@ public class CartaService {
         return new ResponseModel(1,"No hay lista", null);
 
     }
+    public ResponseModel obtenerCartasPorColeccionId(int id){
+        Optional<List<CartaInfo>> listaCartas =cartaRepository.findCartasByColeccionId(id);
+        if(listaCartas.isPresent()) {
+            return new ResponseModel(0,"Lista de cartas",listaCartas.get());
+        }
+        return new ResponseModel(1,"No hay lista", null);
+    }
 }

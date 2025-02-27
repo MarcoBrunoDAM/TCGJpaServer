@@ -10,6 +10,7 @@ import org.dam19.tcgjpaserver.repositories.ColeccionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -54,4 +55,5 @@ public class ColeccionService {
         return new ResponseModel(1,"No hay lista", null);
 
     }
+
 }

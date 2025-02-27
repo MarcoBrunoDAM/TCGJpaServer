@@ -51,6 +51,20 @@ public class ProductoService {
         return new ResponseModel(1, "No hay lista", null);
 
     }
+    public ResponseModel obtenerProductoByColeccionId(int id){
+        Optional<List<ProductoInfo>> listaProductos = productoRepository.findProductoByColeccionId(id);
+        if (listaProductos.isPresent()) {
+            return new ResponseModel(0, "Lista de productos", listaProductos.get());
+        }
+        return new ResponseModel(1, "No hay lista", null);
+    }
+    public ResponseModel obtenerProductoByTipoProductoId(int id){
+        Optional<List<ProductoInfo>> listaProductos = productoRepository.findProductoByTipoProductoId(id);
+        if (listaProductos.isPresent()) {
+            return new ResponseModel(0, "Lista de productos", listaProductos.get());
+        }
+        return new ResponseModel(1, "No hay lista", null);
+    }
 
     public ResponseModel obtenerProductoPorIdDistribuidor(int id) {
         Optional<List<ProductoInfo>> listaProductos = productoRepository.findByDistribuidores_Id(id);

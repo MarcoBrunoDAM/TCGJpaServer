@@ -25,5 +25,11 @@ public interface ProductoRepository extends JpaRepository<Producto, Integer> {
     @Query("select p from Producto p inner join p.distribuidores distribuidores where distribuidores.id = ?1")
    Optional <List<ProductoInfo>> findByDistribuidores_Id(Integer id);
 
+    @Query("select p from Producto p where p.idColeccion.id = ?1")
+    Optional<List<ProductoInfo>> findProductoByColeccionId(Integer id);
+
+    @Query("select p from Producto p where p.idTipo.id = ?1")
+    Optional<List<ProductoInfo>> findProductoByTipoProductoId(Integer id);
+
 
 }

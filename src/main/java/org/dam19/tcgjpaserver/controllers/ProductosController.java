@@ -30,7 +30,28 @@ public class ProductosController {
 
 
 
-
+    @GetMapping("/buscar/coleccion/{id}")
+    public ResponseEntity<ResponseModel> obtenerProductoPorIDColeccion(@PathVariable int id,@AuthenticationPrincipal UserDetails userDetails) {
+        if(userDetails == null){
+            return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
+        }
+        String admin = userDetails.getAuthorities().iterator().next().getAuthority();
+        if (admin.equals("ROLE_true")) {
+            return ResponseEntity.ok(productoService.obtenerProductoByColeccionId(id));
+        }
+        return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
+    }
+    @GetMapping("/buscar/tipo_producto/{id}")
+    public ResponseEntity<ResponseModel> obtenerProductoPorIDTipoProducto(@PathVariable int id,@AuthenticationPrincipal UserDetails userDetails) {
+        if(userDetails == null){
+            return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
+        }
+        String admin = userDetails.getAuthorities().iterator().next().getAuthority();
+        if (admin.equals("ROLE_true")) {
+            return ResponseEntity.ok(productoService.obtenerProductoByTipoProductoId(id));
+        }
+        return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
+    }
     @GetMapping("/buscar/{id}")
     public ResponseEntity<ResponseModel> obtenerProductoPorID(@PathVariable int id,
                                                               @AuthenticationPrincipal UserDetails userDetails) {
