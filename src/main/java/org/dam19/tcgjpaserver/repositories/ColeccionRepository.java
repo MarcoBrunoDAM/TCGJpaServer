@@ -20,4 +20,9 @@ public interface ColeccionRepository extends JpaRepository<Coleccion, Integer> {
   @Modifying
   @Query("delete from Coleccion c where c.id = ?1")
   int deleteByIdIs(Integer id);
-  }
+
+  @Query("select c from Coleccion c where c.nombre = ?1")
+  ColeccionInfo findByNombreIs(String nombre);
+
+
+}

@@ -69,4 +69,17 @@ public class ColeccionController {
         }
         return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
     }
+
+    @GetMapping("/buscarNombre/{nombre}")
+    public ResponseEntity<ResponseModel> obtenerColeccionPorNombre(@PathVariable String nombre, @AuthenticationPrincipal UserDetails userDetails) {
+//        if (userDetails == null) {
+//            return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
+//        }
+//        String admin = userDetails.getAuthorities().iterator().next().getAuthority();
+//        if(admin.equals("ROLE_true")) {
+        return ResponseEntity.ok(coleccionService.obtenerColeccionPorNombre(nombre));
+//        }
+//        return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
+//    }
+    }
 }

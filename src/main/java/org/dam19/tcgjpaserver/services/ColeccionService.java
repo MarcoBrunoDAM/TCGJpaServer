@@ -10,7 +10,6 @@ import org.dam19.tcgjpaserver.repositories.ColeccionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -56,4 +55,12 @@ public class ColeccionService {
 
     }
 
+    public ResponseModel obtenerColeccionPorNombre(String nombre) {
+        ColeccionInfo coleccion = coleccionRepository.findByNombreIs(nombre);
+        if(coleccion != null){
+            return new ResponseModel(0,"Lista de colecciones",coleccion.getId());
+        }
+        return new ResponseModel(1,"No hay lista", null);
+
+    }
 }

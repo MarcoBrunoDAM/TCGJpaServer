@@ -31,19 +31,8 @@ public class CartaController {
 
 
 
-    @GetMapping("/buscar/coleccion/{id}")
-    public ResponseEntity<ResponseModel> obtenerCartaPorColeccionID(@PathVariable int id,@AuthenticationPrincipal UserDetails userDetails) {
-        if(userDetails == null){
-            return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
-        }
-        String admin = userDetails.getAuthorities().iterator().next().getAuthority();
-        if (admin.equals("ROLE_true")) {
-            return ResponseEntity.ok(cartaService.obtenerCartasPorColeccionId(id));
-        }
-        return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
-    }
     @GetMapping("/buscar/{id}")
-    public ResponseEntity<ResponseModel> obtenerCartaPorID(@PathVariable int id,@AuthenticationPrincipal UserDetails userDetails) {
+    public ResponseEntity<ResponseModel> obtenerColeccionPorID(@PathVariable int id,@AuthenticationPrincipal UserDetails userDetails) {
         if(userDetails == null){
             return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
         }
@@ -56,21 +45,21 @@ public class CartaController {
 
 
 
+
     @GetMapping("/todas")
-    public ResponseEntity<ResponseModel> obtenerTodasCartas(@AuthenticationPrincipal UserDetails userDetails) {
-        if(userDetails == null){
-            return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
-        }
-        String admin = userDetails.getAuthorities().iterator().next().getAuthority();
-        if (admin.equals("ROLE_true")) {
-            return ResponseEntity.ok(cartaService.obtenerListaCartas());
-        }
-        return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
+    public ResponseEntity<ResponseModel> obtenerTodasColecciones(@AuthenticationPrincipal UserDetails userDetails) {
+//        if(userDetails == null){
+//            return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
+//        }
+//        String admin = userDetails.getAuthorities().iterator().next().getAuthority();
+//        if (admin.equals("ROLE_true")) {
+        return ResponseEntity.ok(cartaService.obtenerListaCartas());
+//        }
+//        return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
+//    }
+
+
     }
-
-
-
-
     @GetMapping("/borrar/{id}")
     public ResponseEntity<ResponseModel> eliminarCartaPorId(@PathVariable int id, @AuthenticationPrincipal UserDetails userDetails) {
         if(userDetails == null){

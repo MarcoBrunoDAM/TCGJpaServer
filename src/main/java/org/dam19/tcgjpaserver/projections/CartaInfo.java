@@ -1,7 +1,9 @@
 package org.dam19.tcgjpaserver.projections;
 
+import java.time.LocalDate;
+
 /**
- * Projection for {@link org.dam19.tcgjpaservertest.entities.Carta}
+ * Projection for {@link org.dam19.tcgjpaserver.entities.Carta}
  */
 public interface CartaInfo {
     Integer getId();
@@ -12,14 +14,20 @@ public interface CartaInfo {
 
     String getUrlImagen();
 
-    ColeccionInfo getIdColeccion();
+    ColeccionInfo1 getIdColeccion();
 
     /**
-     * Projection for {@link org.dam19.tcgjpaservertest.entities.Coleccion}
+     * Projection for {@link org.dam19.tcgjpaserver.entities.Coleccion}
      */
-    interface ColeccionInfo {
+    interface ColeccionInfo1 {
         Integer getId();
 
         String getNombre();
+
+        Integer getNumeroCartas();
+
+        LocalDate getFechaLanzamiento();
+
+        String getUrlImagen();
     }
 }

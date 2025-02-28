@@ -31,14 +31,14 @@ public class DistribuidoresController {
     @GetMapping("/buscar/{id}")
     public ResponseEntity<ResponseModel> obtenerDistribuidorPorID(@PathVariable int id,
                                                                   @AuthenticationPrincipal UserDetails userDetails){
-        if(userDetails == null){
-            return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
-        }
-        String admin = userDetails.getAuthorities().iterator().next().getAuthority();
-        if(admin.equals("ROLE_true")){
-            return ResponseEntity.ok(distribuidoresService.obtenerDistribuidorPorId(id));
-        }
-        return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
+//        if(userDetails == null){
+//            return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
+//        }
+//        String admin = userDetails.getAuthorities().iterator().next().getAuthority();
+//        if(admin.equals("ROLE_true")){
+           return ResponseEntity.ok(distribuidoresService.obtenerDistribuidorPorId(id));
+//        }
+//        return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
     }
 
 
