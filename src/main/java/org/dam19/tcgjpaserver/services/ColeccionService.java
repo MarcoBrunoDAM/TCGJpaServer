@@ -31,7 +31,7 @@ public class ColeccionService {
 
     }
 
-    public ResponseModel obtenerColeccionPorId(int id) {
+    public ResponseModel obtenerColecionPorId(int id) {
         Optional<List<ColeccionInfo>> listaColecciones = coleccionRepository.obtenerColeccionPorId(id);
         if(listaColecciones.isPresent()){
             return new ResponseModel(0,"Lista de colecciones",listaColecciones.get());
