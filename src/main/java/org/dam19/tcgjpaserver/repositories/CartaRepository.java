@@ -24,4 +24,7 @@ public interface CartaRepository extends JpaRepository<Carta, Integer> {
   @Query("select c from Carta c where c.idColeccion.id = ?1")
   Optional<List<CartaInfo>> findCartasByColeccionId(Integer id);
 
+  @Query("select c from Carta c where c.nombre like ?1")
+  Optional<List<CartaInfo>> findByNombreLike(String nombre);
+
 }

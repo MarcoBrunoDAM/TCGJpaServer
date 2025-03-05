@@ -18,14 +18,14 @@ public class ColeccionController {
     @PostMapping("/crear")
     public ResponseEntity<ResponseModel> crearColeccion(@RequestBody ColeccionDto coleccionDto,
                                                         @AuthenticationPrincipal UserDetails userDetails) {
-//        if (userDetails == null) {
-//            return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
-//        }
-//        String admin = userDetails.getAuthorities().iterator().next().getAuthority();
-//        if(admin.equals("ROLE_true")) {
+        if (userDetails == null) {
+            return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
+        }
+        String admin = userDetails.getAuthorities().iterator().next().getAuthority();
+        if(admin.equals("ROLE_true")) {
         return ResponseEntity.ok(coleccionService.crearColeccion(coleccionDto));
-//        }
-//        return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
+        }
+        return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
     }
 
 
@@ -72,14 +72,14 @@ public class ColeccionController {
 
     @GetMapping("/buscarNombre/{nombre}")
     public ResponseEntity<ResponseModel> obtenerColeccionPorNombre(@PathVariable String nombre, @AuthenticationPrincipal UserDetails userDetails) {
-//        if (userDetails == null) {
-//            return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
-//        }
-//        String admin = userDetails.getAuthorities().iterator().next().getAuthority();
-//        if(admin.equals("ROLE_true")) {
+        if (userDetails == null) {
+            return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
+        }
+        String admin = userDetails.getAuthorities().iterator().next().getAuthority();
+        if(admin.equals("ROLE_true")) {
         return ResponseEntity.ok(coleccionService.obtenerColeccionPorNombre(nombre));
-//        }
-//        return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
-//    }
+        }
+        return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
     }
+
 }
