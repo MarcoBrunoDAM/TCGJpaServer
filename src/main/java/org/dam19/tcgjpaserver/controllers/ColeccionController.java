@@ -45,6 +45,7 @@ public class ColeccionController {
 
     @GetMapping("/todas")
     public ResponseEntity<ResponseModel> obtenerTodasColecciones(@AuthenticationPrincipal UserDetails userDetails) {
+        System.out.println("Hika");
         if (userDetails == null) {
             return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
         }
