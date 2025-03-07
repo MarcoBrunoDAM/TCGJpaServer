@@ -22,6 +22,8 @@ public class ColeccionService {
 
 
     public ResponseModel crearColeccion(ColeccionDto coleccionDto) {
+        //Convertimos coleccionDto a una entidad (Coleccion).
+
         Coleccion coleccion = coleccionMapper.toEntity(coleccionDto);
 
         if (coleccionRepository.save(coleccion) != null) {
@@ -33,6 +35,7 @@ public class ColeccionService {
 
     public ResponseModel obtenerColeccionPorId(int id) {
         Optional<List<ColeccionInfo>> listaColecciones = coleccionRepository.obtenerColeccionPorId(id);
+        //Comprueba si la lista obtenida tiene colecciones.
         if(listaColecciones.isPresent()){
             return new ResponseModel(0,"Lista de colecciones",listaColecciones.get());
         }
@@ -57,6 +60,7 @@ public class ColeccionService {
 
     public ResponseModel obtenerColeccionPorNombre(String nombre) {
         ColeccionInfo coleccion = coleccionRepository.findByNombreIs(nombre);
+        //Comprueba si la lista obtenida tiene colecciones.
         if(coleccion != null){
             return new ResponseModel(0,"Lista de colecciones",coleccion.getId());
         }

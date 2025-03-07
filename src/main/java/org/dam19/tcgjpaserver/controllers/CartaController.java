@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 public class CartaController {
     @Autowired
     CartaService cartaService;
-
+    //Este metodo permite crear una carta.
     @PostMapping("/crear")
     public ResponseEntity<ResponseModel> crearCarta(@RequestBody CartaDto cartaDto,
                                                     @AuthenticationPrincipal UserDetails userDetails) {
@@ -30,9 +30,9 @@ public class CartaController {
 
 
 
-
+    //Este metodo permite obtener una carta determinada a traves de su id.
     @GetMapping("/buscar/{id}")
-    public ResponseEntity<ResponseModel> obtenerColeccionPorID(@PathVariable int id,@AuthenticationPrincipal UserDetails userDetails) {
+    public ResponseEntity<ResponseModel> obtenerCartaPorID(@PathVariable int id,@AuthenticationPrincipal UserDetails userDetails) {
         if(userDetails == null){
             return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
         }
@@ -45,9 +45,9 @@ public class CartaController {
 
 
 
-
+    //Este metodo permite obtener todas las cartas existentes en la BBDD.
     @GetMapping("/todas")
-    public ResponseEntity<ResponseModel> obtenerTodasColecciones(@AuthenticationPrincipal UserDetails userDetails) {
+    public ResponseEntity<ResponseModel> obtenerTodasCartas(@AuthenticationPrincipal UserDetails userDetails) {
         if(userDetails == null){
             return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
         }
@@ -57,7 +57,7 @@ public class CartaController {
         }
         return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
     }
-
+    //Este metodo pemite borrar una carta determinada a traves de su id.
     @GetMapping("/borrar/{id}")
     public ResponseEntity<ResponseModel> eliminarCartaPorId(@PathVariable int id, @AuthenticationPrincipal UserDetails userDetails) {
         if(userDetails == null){
@@ -69,7 +69,7 @@ public class CartaController {
         }
         return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
     }
-
+    //Este metodo obtener todas las cartas que pertenecen a una coleccion a traves de su id.
     @GetMapping("/buscarPorColeccionId/{id}")
     public ResponseEntity<ResponseModel> obtenerCartaPorColeccionId(@PathVariable int id,@AuthenticationPrincipal UserDetails userDetails) {
         if(userDetails == null){

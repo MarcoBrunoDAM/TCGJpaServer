@@ -21,6 +21,7 @@ public class ProductoService {
     private ProductoMapper productoMapper;
 
     public ResponseModel crearProducto(ProductoDto productoDto) {
+        //Convertimos ProductoDto a una entidad (Producto).
         Producto producto = productoMapper.toEntity(productoDto);
         if (productoRepository.save(producto) != null) {
             return new ResponseModel(0, "Producto creado", producto.getId());
@@ -31,9 +32,12 @@ public class ProductoService {
 
     public ResponseModel obtenerProductoPorId(int id) {
         Optional<List<ProductoInfo>> listaProductos = productoRepository.findProductoById(id);
+        //Comprueba si la lista obtenida tiene productos.
         if (listaProductos.isPresent()) {
             return new ResponseModel(0, "Lista de productos", listaProductos.get());
         }
+        // Si el programa llega hasta aqui, el programa no ha encontrado ningun producto con dicha id. Devuelve una respuesta al usuario indicando esto, pero sin devolver datos.
+
         return new ResponseModel(1, "No hay lista", null);
 
     }
@@ -53,24 +57,30 @@ public class ProductoService {
     }
     public ResponseModel obtenerProductoByColeccionId(int id){
         Optional<List<ProductoInfo>> listaProductos = productoRepository.findProductoByColeccionId(id);
+        //Comprueba si la lista obtenida tiene productos.
         if (listaProductos.isPresent()) {
             return new ResponseModel(0, "Lista de productos", listaProductos.get());
         }
+        // Si el programa llega hasta aqui, el programa no ha encontrado ningun producto que tenga dicha coleccion. Devuelve una respuesta al usuario indicando esto, pero sin devolver datos.
         return new ResponseModel(1, "No hay lista", null);
     }
     public ResponseModel obtenerProductoByTipoProductoId(int id){
         Optional<List<ProductoInfo>> listaProductos = productoRepository.findProductoByTipoProductoId(id);
+        //Comprueba si la lista obtenida tiene productos.
         if (listaProductos.isPresent()) {
             return new ResponseModel(0, "Lista de productos", listaProductos.get());
         }
+        // Si el programa llega hasta aqui, el programa no ha encontrado ningun producto que tenga dicho formato. Devuelve una respuesta al usuario indicando esto, pero sin devolver datos.
         return new ResponseModel(1, "No hay lista", null);
     }
 
     public ResponseModel obtenerProductoPorIdDistribuidor(int id) {
         Optional<List<ProductoInfo>> listaProductos = productoRepository.findByDistribuidores_Id(id);
+        //Comprueba si la lista obtenida tiene productos.
         if (listaProductos.isPresent()) {
             return new ResponseModel(0, "Lista de productos", listaProductos.get());
         }
+        // Si el programa llega hasta aqui, el programa no ha encontrado ningun producto de dicho distribuidor. Devuelve una respuesta al usuario indicando esto, pero sin devolver datos.
         return new ResponseModel(1, "No hay lista", null);
     }
 }

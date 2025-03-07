@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 public class ColeccionController {
     @Autowired
     private ColeccionService coleccionService;
-
+    //Este metodo permite crear una coleccion.
     @PostMapping("/crear")
     public ResponseEntity<ResponseModel> crearColeccion(@RequestBody ColeccionDto coleccionDto,
                                                         @AuthenticationPrincipal UserDetails userDetails) {
@@ -29,7 +29,7 @@ public class ColeccionController {
     }
 
 
-
+    //Este metodo permite obtener una coleccion determinada a traves de su id.
     @GetMapping("/buscar/{id}")
     public ResponseEntity<ResponseModel> obtenerColeccionPorID(@PathVariable int id, @AuthenticationPrincipal UserDetails userDetails) {
         if (userDetails == null) {
@@ -42,7 +42,7 @@ public class ColeccionController {
         return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
     }
 
-
+    //Este metodo permite obtener todas las colecciones existentes en la BBDD.
     @GetMapping("/todas")
     public ResponseEntity<ResponseModel> obtenerTodasColecciones(@AuthenticationPrincipal UserDetails userDetails) {
         System.out.println("Hika");
@@ -57,7 +57,7 @@ public class ColeccionController {
 
     }
 
-
+    //Este metodo pemite borrar una coleccion determinada a traves de su id.
     @GetMapping("/borrar/{id}")
     public ResponseEntity<ResponseModel> eliminarColeccionPorId(@PathVariable int id,
                                                                 @AuthenticationPrincipal UserDetails userDetails) {
@@ -70,7 +70,7 @@ public class ColeccionController {
         }
         return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
     }
-
+    //Este metodo permite obtener una coleccion determinada a traves de su nombre.
     @GetMapping("/buscarNombre/{nombre}")
     public ResponseEntity<ResponseModel> obtenerColeccionPorNombre(@PathVariable String nombre, @AuthenticationPrincipal UserDetails userDetails) {
         if (userDetails == null) {

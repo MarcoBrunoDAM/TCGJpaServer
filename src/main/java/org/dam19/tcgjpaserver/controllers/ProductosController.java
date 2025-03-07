@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 public class ProductosController {
     @Autowired
     private ProductoService productoService;
-
+    //Este metodo permite crear un producto.
     @PostMapping("/crear")
     public ResponseEntity<ResponseModel> crearProducto(@RequestBody ProductoDto productoDto,
                                                        @AuthenticationPrincipal UserDetails userDetails) {
@@ -52,6 +52,8 @@ public class ProductosController {
         }
         return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
     }
+
+    //Este metodo permite obtener un producto determinado a traves de su id.
     @GetMapping("/buscar/{id}")
     public ResponseEntity<ResponseModel> obtenerProductoPorID(@PathVariable int id,
                                                               @AuthenticationPrincipal UserDetails userDetails) {
@@ -66,7 +68,7 @@ public class ProductosController {
     }
 
 
-
+    //Este metodo permite obtener todos los productos existentes en la BBDD.
     @GetMapping("/todos")
     public ResponseEntity<ResponseModel> obtenerTodosProductos( @AuthenticationPrincipal UserDetails userDetails){
         if (userDetails == null) {
@@ -79,7 +81,7 @@ public class ProductosController {
         return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
     }
 
-
+    //Este metodo pemite borrar un producto determinado a traves de su id.
     @GetMapping("/borrar/{id}")
     public ResponseEntity<ResponseModel> eliminaProductoPorId(@PathVariable int id, @AuthenticationPrincipal UserDetails userDetails) {
         if (userDetails == null) {
@@ -92,7 +94,7 @@ public class ProductosController {
         return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
     }
 
-
+    //Este metodo obtener todos los productos que tiene un distribuidor a traves de la id de este.
     @GetMapping("/buscar_distribuidor/{id}")
     public ResponseEntity<ResponseModel> obtenerProductoPorIdDistribuidor(@PathVariable int id,
                                                                           @AuthenticationPrincipal UserDetails userDetails) {

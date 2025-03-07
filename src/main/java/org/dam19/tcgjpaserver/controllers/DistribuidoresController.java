@@ -15,6 +15,7 @@ public class DistribuidoresController {
     @Autowired
     DistribuidoresService distribuidoresService;
     //AuthenticationPrincipal UserDetails userDetails
+    //Este metodo permite crear un distribuidor.
     @PostMapping("/crear")
     public ResponseEntity<ResponseModel> crearDistribuidor(@RequestBody DistribuidoreDto distribuidoreDto,
                                                            @AuthenticationPrincipal UserDetails userDetails) {
@@ -27,7 +28,7 @@ public class DistribuidoresController {
         }
         return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
     }
-
+    //Este metodo permite obtener un distribuidor determinado a traves de su id.
     @GetMapping("/buscar/{id}")
     public ResponseEntity<ResponseModel> obtenerDistribuidorPorID(@PathVariable int id,
                                                                   @AuthenticationPrincipal UserDetails userDetails){
@@ -42,7 +43,7 @@ public class DistribuidoresController {
     }
 
 
-
+    //Este metodo permite obtener todos los distribuidores existentes en la BBDD.
     @GetMapping("/todos")
     public ResponseEntity<ResponseModel> obtenerListaDistribuidores( @AuthenticationPrincipal UserDetails userDetails) {
         if(userDetails == null){
@@ -57,7 +58,7 @@ public class DistribuidoresController {
 
 
 
-
+    //Este metodo pemite borrar un distribuidor determinado a traves de su id.
     @GetMapping("/borrar/{id}")
     public ResponseEntity<ResponseModel> eliminarDistribuidorPorId(@PathVariable int id,@AuthenticationPrincipal UserDetails userDetails) {
         if(userDetails == null){

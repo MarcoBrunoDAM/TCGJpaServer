@@ -20,6 +20,7 @@ public class TipoProductoService {
     private TipoProductoMapper tipoProductoMapper;
 
     public ResponseModel crearTipoProducto (TipoProductoDto tipoProductoDto) {
+        //Convertimos TipoProductoDto a una entidad (TipoProducto).
         TipoProducto tipoProducto = tipoProductoMapper.toEntity(tipoProductoDto);
         if (tipoProductoRepository.save(tipoProducto) != null) {
             return new ResponseModel(0,"Tipo producto creado",tipoProducto.getId());

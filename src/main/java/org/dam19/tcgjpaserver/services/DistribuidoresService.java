@@ -20,6 +20,7 @@ public class DistribuidoresService {
     DistribuidoreMapper distribuidoreMapper;
 
     public ResponseModel crearDistribuidor(DistribuidoreDto distribuidoreDto) {
+        //Convertimos DistribuidorDto a una entidad (Distribuidor).
         Distribuidore distribuidore = distribuidoreMapper.toEntity(distribuidoreDto);
         if (distribuidoreRepository.save(distribuidore) != null) {
             return new ResponseModel(0,"Distribuidor creado",distribuidore.getId());
@@ -30,6 +31,7 @@ public class DistribuidoresService {
 
     public ResponseModel obtenerDistribuidorPorId(int id) {
         Optional<List<DistribuidoreInfo>> listaDistribuidores = distribuidoreRepository.obtenerDistribuidorById(id);
+        //Comprueba si la lista obtenida tiene distribuidores.
         if(listaDistribuidores.isPresent()){
             return new ResponseModel(0,"Lista de distribuidores",listaDistribuidores.get());
         }

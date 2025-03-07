@@ -20,6 +20,7 @@ public class CartaService {
     CartaMapper cartaMapper;
 
     public ResponseModel crearCarta (CartaDto cartaDto) {
+        //Convertimos CartaDto a una entidad (Carta).
         Carta carta = cartaMapper.toEntity(cartaDto);
         if (cartaRepository.save(carta) != null) {
             return new ResponseModel(0,"Carta creada",carta.getId());
@@ -30,6 +31,7 @@ public class CartaService {
 
     public ResponseModel obtenerCartaPorId(int id) {
         Optional<List<CartaInfo>> listaCartas = cartaRepository.findCartaById(id);
+        //Comprueba si la lista obtenida tiene cartas.
         if(listaCartas.isPresent()) {
             return new ResponseModel(0,"Lista de cartas",listaCartas.get());
         }
@@ -51,9 +53,11 @@ public class CartaService {
     }
     public ResponseModel obtenerCartasPorColeccionId(int id){
         Optional<List<CartaInfo>> listaCartas =cartaRepository.findCartasByColeccionId(id);
+        //Comprueba si la lista obtenida tiene cartas.
         if(listaCartas.isPresent()) {
             return new ResponseModel(0,"Lista de cartas",listaCartas.get());
         }
+        // Si el programa llega hasta aqui, el programa no ha encontrado ninguna carta que pertenezca a dicha id. Devuelve una respuesta al usuario indicando esto, pero sin devolver datos.
         return new ResponseModel(1,"No hay lista", null);
     }
 }

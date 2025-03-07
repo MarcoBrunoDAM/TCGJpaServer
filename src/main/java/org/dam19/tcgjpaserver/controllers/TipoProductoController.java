@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 public class TipoProductoController {
     @Autowired
     TipoProductoService tipoProductoService;
+    //Este metodo permite crear un tipo de producto.
     @PostMapping("/crear")
     public ResponseEntity<ResponseModel> crearTipoProducto(@RequestBody TipoProductoDto tipoProductoDto,
                                                            @AuthenticationPrincipal UserDetails userDetails) {
@@ -28,7 +29,7 @@ public class TipoProductoController {
         return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
     }
 
-//Hola
+    //Este metodo obtener todos los productos que tienen un formato de producto  a traves de la id de este.
 
     @GetMapping("/buscar/{id}")
     public ResponseEntity<ResponseModel> obtenerProductoPorID(@PathVariable int id, @AuthenticationPrincipal UserDetails userDetails) {
@@ -43,7 +44,7 @@ public class TipoProductoController {
     }
 
 
-
+    //Este metodo permite obtener todos los tipos de producto existentes en la BBDD.
     @GetMapping("/todos")
     public ResponseEntity<ResponseModel> obtenerTodosProductos(@AuthenticationPrincipal UserDetails userDetails){
         if (userDetails == null) {
@@ -58,7 +59,7 @@ public class TipoProductoController {
 
 
 
-
+    //Este metodo pemite borrar un tipo de producto determinado a traves de su id.
     @GetMapping("/borrar/{id}")
     public ResponseEntity<ResponseModel> eliminarTipoProductoPorId(@PathVariable int id, @AuthenticationPrincipal UserDetails userDetails) {
         if (userDetails == null) {
