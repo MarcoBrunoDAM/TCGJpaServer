@@ -28,7 +28,7 @@ public class TipoProductoController {
         return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
     }
 
-
+//Hola
 
     @GetMapping("/buscar/{id}")
     public ResponseEntity<ResponseModel> obtenerProductoPorID(@PathVariable int id, @AuthenticationPrincipal UserDetails userDetails) {
