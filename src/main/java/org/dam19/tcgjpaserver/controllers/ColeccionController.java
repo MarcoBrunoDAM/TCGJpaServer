@@ -93,7 +93,7 @@ public class ColeccionController {
     @GetMapping("/buscarNombre/{nombre}")
     public ResponseEntity<ResponseModel> obtenerColeccionPorNombre(@PathVariable String nombre, @AuthenticationPrincipal UserDetails userDetails) {
         if (userDetails == null) {
-            // Si el programa llega hasta aquí, el usuario no está autorizado para llevar a cabo la accion. Devuelve una respuesta al usuario indicando esto, pero sin devolver datos.
+            // Si el programa llega hasta aquí el usuario no está autorizado para llevar a cabo la accion. Devuelve una respuesta al usuario indicando esto, pero sin devolver datos.
             return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
         }
         //Se guarda en la variable <<admin>> el rol del usuario.
