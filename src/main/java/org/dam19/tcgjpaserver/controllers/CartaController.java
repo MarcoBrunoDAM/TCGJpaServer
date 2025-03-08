@@ -19,12 +19,16 @@ public class CartaController {
     public ResponseEntity<ResponseModel> crearCarta(@RequestBody CartaDto cartaDto,
                                                     @AuthenticationPrincipal UserDetails userDetails) {
         if(userDetails == null){
+            // Si el programa llega hasta aqui, el usuario no esta autorizado para llevar a cabo la accion. Devuelve una respuesta al usuario indicando esto, pero sin devolver datos.
             return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
         }
         String admin = userDetails.getAuthorities().iterator().next().getAuthority();
+        //Comprueba si admin es igual a ROLE_true.
         if (admin.equals("ROLE_true")) {
-        return ResponseEntity.ok(cartaService.crearCarta(cartaDto));
+            // Si el programa llega hasta aquí, el usuario está autorizado para llevar a cabo la accion, por lo que la lleva a cabo.
+            return ResponseEntity.ok(cartaService.crearCarta(cartaDto));
         }
+        // Si el programa llega hasta aquí, el usuario no está autorizado para llevar a cabo la accion. Devuelve una respuesta al usuario indicando esto, pero sin devolver datos.
         return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
     }
 
@@ -34,12 +38,19 @@ public class CartaController {
     @GetMapping("/buscar/{id}")
     public ResponseEntity<ResponseModel> obtenerCartaPorID(@PathVariable int id,@AuthenticationPrincipal UserDetails userDetails) {
         if(userDetails == null){
+            // Si el programa llega hasta aquí, el usuario no está autorizado para llevar a cabo la accion. Devuelve una respuesta al usuario indicando esto, pero sin devolver datos.
+
             return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
         }
+        //Se guarda en la variable <<admin>> el rol del usuario.
         String admin = userDetails.getAuthorities().iterator().next().getAuthority();
+        //Comprueba si admin es igual a ROLE_true.
         if (admin.equals("ROLE_true")) {
+            // Si el programa llega hasta aquí, el usuario está autorizado para llevar a cabo la accion, por lo que la lleva a cabo.
             return ResponseEntity.ok(cartaService.obtenerCartaPorId(id));
         }
+        // Si el programa llega hasta aquí, el usuario no está autorizado para llevar a cabo la accion. Devuelve una respuesta al usuario indicando esto, pero sin devolver datos.
+
         return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
     }
 
@@ -49,36 +60,56 @@ public class CartaController {
     @GetMapping("/todas")
     public ResponseEntity<ResponseModel> obtenerTodasCartas(@AuthenticationPrincipal UserDetails userDetails) {
         if(userDetails == null){
+            // Si el programa llega hasta aquí, el usuario no está autorizado para llevar a cabo la accion. Devuelve una respuesta al usuario indicando esto, pero sin devolver datos.
+
             return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
         }
+        //Se guarda en la variable <<admin>> el rol del usuario.
         String admin = userDetails.getAuthorities().iterator().next().getAuthority();
+        //Comprueba si admin es igual a ROLE_true.
         if (admin.equals("ROLE_true")) {
-        return ResponseEntity.ok(cartaService.obtenerListaCartas());
+            // Si el programa llega hasta aquí, el usuario está autorizado para llevar a cabo la accion, por lo que la lleva a cabo.
+            return ResponseEntity.ok(cartaService.obtenerListaCartas());
         }
+        // Si el programa llega hasta aquí, el usuario no está autorizado para llevar a cabo la accion. Devuelve una respuesta al usuario indicando esto, pero sin devolver datos.
+
         return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
     }
     //Este metodo pemite borrar una carta determinada a traves de su id.
     @GetMapping("/borrar/{id}")
     public ResponseEntity<ResponseModel> eliminarCartaPorId(@PathVariable int id, @AuthenticationPrincipal UserDetails userDetails) {
         if(userDetails == null){
+            // Si el programa llega hasta aquí, el usuario no está autorizado para llevar a cabo la accion. Devuelve una respuesta al usuario indicando esto, pero sin devolver datos.
+
             return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
         }
+        //Se guarda en la variable <<admin>> el rol del usuario.
         String admin = userDetails.getAuthorities().iterator().next().getAuthority();
+        //Comprueba si admin es igual a ROLE_true.
         if (admin.equals("ROLE_true")) {
+            // Si el programa llega hasta aquí, el usuario está autorizado para llevar a cabo la accion, por lo que la lleva a cabo.
             return ResponseEntity.ok(cartaService.eliminarCartaPorId(id));
         }
+        // Si el programa llega hasta aquí, el usuario no está autorizado para llevar a cabo la accion. Devuelve una respuesta al usuario indicando esto, pero sin devolver datos.
+
         return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
     }
     //Este metodo obtener todas las cartas que pertenecen a una coleccion a traves de su id.
     @GetMapping("/buscarPorColeccionId/{id}")
     public ResponseEntity<ResponseModel> obtenerCartaPorColeccionId(@PathVariable int id,@AuthenticationPrincipal UserDetails userDetails) {
         if(userDetails == null){
+            // Si el programa llega hasta aquí, el usuario no está autorizado para llevar a cabo la accion. Devuelve una respuesta al usuario indicando esto, pero sin devolver datos.
             return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
         }
+        //Se guarda en la variable <<admin>> el rol del usuario.
         String admin = userDetails.getAuthorities().iterator().next().getAuthority();
+        //Comprueba si admin es igual a ROLE_true.
         if (admin.equals("ROLE_true")) {
-          return ResponseEntity.ok(cartaService.obtenerCartasPorColeccionId(id));
+            // Si el programa llega hasta aquí, el usuario está autorizado para llevar a cabo la accion, por lo que la lleva a cabo.
+            return ResponseEntity.ok(cartaService.obtenerCartasPorColeccionId(id));
         }
+        // Si el programa llega hasta aquí, el usuario no está autorizado para llevar a cabo la accion. Devuelve una respuesta al usuario indicando esto, pero sin devolver datos.
+
         return ResponseEntity.ok(new ResponseModel(1,"Usuario no autorizado",null));
     }
 
